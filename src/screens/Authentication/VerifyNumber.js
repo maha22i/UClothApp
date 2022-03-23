@@ -1,4 +1,10 @@
-import { View, Text, SafeAreaView, ScrollView } from "react-native";
+import {
+  View,
+  Text,
+  SafeAreaView,
+  ScrollView,
+  KeyboardAvoidingView,
+} from "react-native";
 import React from "react";
 import PhoneInput from "react-native-phone-input";
 import { useNavigation } from "@react-navigation/native";
@@ -7,62 +13,80 @@ import { TopNav, Button } from "../../components";
 import { ANDROIDSAFEAREAVIEW, COLORS, FONTS } from "../../constants";
 
 export default function VerifyNumber() {
-    const navigation = useNavigation();
+  const navigation = useNavigation();
 
-    function renderHeader() {
-        return (
-            <TopNav
-                text="Verify your phone number"
-                back={true}
-                backOnPress={() => navigation.goBack()}
-            />
-        );
-    }
+  function renderHeader() {
+    return <TopNav back={true} backOnPress={() => navigation.goBack()} />;
+  }
 
-    function renderContent() {
-        return (
-            <ScrollView
-                contentContainerStyle={{ paddingHorizontal: 20 }}
-                showsVerticalScrollIndicator={false}
-            >
-                <Text
-                    style={{
-                        ...FONTS.Mulish_400Regular,
-                        fontSize: 16,
-                        color: COLORS.gray,
-                        paddingTop: 20,
-                        lineHeight: 25,
-                        marginBottom: 30,
-                    }}
-                >
-                    We have sent you an SMS with a code to number +17
-                    0123456789.
-                </Text>
-                <PhoneInput
-                    style={{
-                        borderBottomWidth: 1,
-                        borderBottomColor: "#E2E2E2",
-                        marginBottom: 20,
-                        fontSize: 16,
-                        ...FONTS.Mulish_400Regular,
-                        paddingBottom: 9,
-                    }}
-                    placeholder="123456789"
-                    placeholderTextColor={COLORS.black}
-                    initialCountry={"us"}
-                />
-                <Button
-                    text="confirm"
-                    onPress={() => navigation.navigate("OtpCode")}
-                />
-            </ScrollView>
-        );
-    }
-
+  function renderContent() {
     return (
-        <SafeAreaView style={{ ...ANDROIDSAFEAREAVIEW.AndroidSafeArea }}>
-            {renderHeader()}
-            {renderContent()}
-        </SafeAreaView>
+      <KeyboardAvoidingView
+        behavior={Platform.OS === "ios" ? "padding" : "height"}
+        style={{ flex: 1 }}
+      >
+        <ScrollView
+          contentContainerStyle={{ paddingHorizontal: 20 }}
+          showsVerticalScrollIndicator={false}
+        >
+          <View
+            style={{
+              backgroundColor: "#F0F8FF",
+              borderRadius: 12,
+              width: "100%",
+              marginTop: 44,
+            }}
+          >
+            <Text
+              style={{
+                ...FONTS.H1,
+                color: COLORS.black,
+                marginBottom: 14,
+              }}
+            >
+              Vérification
+            </Text>
+            <Text
+              style={{
+                ...FONTS.Mulish_400Regular,
+                fontSize: 16,
+                color: COLORS.gray,
+                paddingTop: 8,
+                lineHeight: 25,
+                marginBottom: 30,
+              }}
+            >
+              Entrer votre numéro de téléphone pour verifier
+              {/* Un code pin à 6 chiffres vous à été envoyé, saisissez-le
+              ci-dessous pour continuer */}
+            </Text>
+            <PhoneInput
+              style={{
+                borderBottomWidth: 1,
+                borderBottomColor: "#bfbbbb",
+                marginBottom: 20,
+                fontSize: 16,
+                ...FONTS.Mulish_400Regular,
+                paddingBottom: 9,
+              }}
+              placeholder="123456789"
+              placeholderTextColor={COLORS.black}
+              initialCountry={"fr"}
+            />
+            <Button
+              text="Continuer"
+              onPress={() => navigation.navigate("OtpCode")}
+            />
+          </View>
+        </ScrollView>
+      </KeyboardAvoidingView>
     );
+  }
+
+  return (
+    <SafeAreaView style={{ ...ANDROIDSAFEAREAVIEW.AndroidSafeArea }}>
+      {renderHeader()}
+      {renderContent()}
+    </SafeAreaView>
+  );
 }

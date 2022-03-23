@@ -34,7 +34,6 @@ export default function SignIn() {
   function renderHeader() {
     return (
       <TopNav
-        text="Connexion"
         navigation={true}
         backOnPress={() => navigation.goBack()}
         back={true}
@@ -65,9 +64,9 @@ export default function SignIn() {
           >
             <Text
               style={{
-                textAlign: "center",
                 ...FONTS.H1,
                 marginBottom: 14,
+                marginLeft: 8,
               }}
             >
               Bienvenue!
@@ -81,100 +80,126 @@ export default function SignIn() {
               fontSize: 16,
             }}
           ></Text> */}
-            <InputField
-              text="Email"
-              placeholder="chehem21@gmail.com"
-              containerStyle={{ marginBottom: 20 }}
-              icon={
-                <View
-                  style={{
-                    paddingHorizontal: 30,
-                    height: "100%",
-                    color: COLORS.bleu,
-                    justifyContent: "center",
-                  }}
-                >
-                  <Check strokeColor={COLORS.bleu} />
-                </View>
-              }
-            />
-            <InputField
-              text="password"
-              placeholder="med"
-              containerStyle={{ marginBottom: 20 }}
-              icon={
-                <TouchableOpacity
-                  style={{
-                    paddingHorizontal: 30,
-                    height: "100%",
-                    color: COLORS.bleu,
-                    justifyContent: "center",
-                  }}
-                  onPress={() => {
-                    setPassVissible((passVissible) => !passVissible);
-                  }}
-                >
-                  {passVissible == true ? <EyeOn /> : <EyeOff />}
-                </TouchableOpacity>
-              }
-              secureTextEntry={passVissible == true ? false : true}
-            />
-            <View
-              style={{
-                flexDirection: "row",
-                alignItems: "center",
-                justifyContent: "space-between",
-                marginBottom: 30,
-              }}
-            >
-              <TouchableOpacity
+
+            <View style={{ marginTop: 10 }}>
+              <InputField
+                text="Email"
+                placeholder="chehem21@gmail.com"
+                containerStyle={{ marginBottom: 20 }}
+                icon={
+                  <View
+                    style={{
+                      paddingHorizontal: 30,
+                      height: "100%",
+                      color: COLORS.bleu,
+                      justifyContent: "center",
+                    }}
+                  >
+                    <Check strokeColor={COLORS.bleu} />
+                  </View>
+                }
+              />
+              <InputField
+                text="password"
+                placeholder="••••••••"
+                containerStyle={{ marginBottom: 20 }}
+                icon={
+                  <TouchableOpacity
+                    style={{
+                      paddingHorizontal: 30,
+                      height: "100%",
+                      color: COLORS.bleu,
+                      justifyContent: "center",
+                    }}
+                    onPress={() => {
+                      setPassVissible((passVissible) => !passVissible);
+                    }}
+                  >
+                    {passVissible == true ? <EyeOn /> : <EyeOff />}
+                  </TouchableOpacity>
+                }
+                secureTextEntry={passVissible == true ? false : true}
+              />
+              <View
                 style={{
                   flexDirection: "row",
                   alignItems: "center",
-                  alignItems: "center",
-                }}
-                onPress={() => {
-                  setRememberMe((rememberMe) => !rememberMe);
+                  justifyContent: "space-between",
+                  marginBottom: 30,
                 }}
               >
-                <View
+                <TouchableOpacity
                   style={{
-                    width: 18,
-                    height: 18,
-                    borderRadius: 5,
-                    borderWidth: 2,
-                    borderColor: COLORS.lightBlue,
-                    marginRight: 12,
-                    justifyContent: "center",
+                    flexDirection: "row",
+                    alignItems: "center",
                     alignItems: "center",
                   }}
-                >
-                  {rememberMe == true && <CategoryCheck />}
-                </View>
-                <Text
-                  style={{
-                    fontFamily: "Mulish_400Regular",
-                    fontSize: 16,
-                    lineHeight: 16 * 1.7,
-                    color: COLORS.bleu,
+                  onPress={() => {
+                    setRememberMe((rememberMe) => !rememberMe);
                   }}
                 >
-                  Se souvenir
-                </Text>
-              </TouchableOpacity>
+                  <View
+                    style={{
+                      width: 18,
+                      height: 18,
+                      borderRadius: 5,
+                      borderWidth: 2,
+                      borderColor: COLORS.lightBlue,
+                      marginRight: 12,
+                      justifyContent: "center",
+                      alignItems: "center",
+                    }}
+                  >
+                    {rememberMe == true && <CategoryCheck />}
+                  </View>
+                  <Text
+                    style={{
+                      fontFamily: "Mulish_400Regular",
+                      fontSize: 16,
+                      lineHeight: 16 * 1.7,
+                      color: COLORS.bleu,
+                    }}
+                  >
+                    Se souvenir
+                  </Text>
+                </TouchableOpacity>
 
-              <TouchableOpacity
-                onPress={() => navigation.navigate("ForgotPassword")}
-              >
-                <Text style={{ color: COLORS.bleu }}>Mot passe Oublié?</Text>
-              </TouchableOpacity>
-            </View>
-            <View>
-              <Button
+                <TouchableOpacity
+                  onPress={() => navigation.navigate("ForgotPassword")}
+                >
+                  <Text style={{ color: COLORS.bleu }}>Mot passe Oublié?</Text>
+                </TouchableOpacity>
+              </View>
+              <View>
+                <TouchableOpacity
+                  style={{
+                    width: 255,
+                    height: 50,
+                    borderRadius: 50,
+                    justifyContent: "center",
+                    alignItems: "center",
+                    backgroundColor: COLORS.bleu,
+                    alignSelf: "center",
+                    marginBottom: 30,
+                  }}
+                  onPress={() => navigation.navigate("MainLayout")}
+                >
+                  <Text
+                    style={{
+                      textTransform: "uppercase",
+                      fontSize: 14,
+                      color: COLORS.white,
+                    }}
+                  >
+                    Connexion
+                  </Text>
+                </TouchableOpacity>
+                {/* <Button
                 text="Connexion"
                 containerStyle={{ marginBottom: 20 }}
                 onPress={() => navigation.navigate("MainLayout")}
-              />
+              /> */}
+              </View>
             </View>
 
             <View
@@ -192,7 +217,7 @@ export default function SignIn() {
                   marginRight: 3,
                 }}
               >
-                Vous n'avez pas de compte?
+                J'ai pas de compte?
               </Text>
               <TouchableOpacity onPress={() => navigation.navigate("SignUp")}>
                 <Text
@@ -200,6 +225,7 @@ export default function SignIn() {
                     fontFamily: "Mulish_400Regular",
                     fontSize: 16,
                     color: COLORS.bleu,
+                    marginLeft: 10,
                   }}
                 >
                   S'inscrire.

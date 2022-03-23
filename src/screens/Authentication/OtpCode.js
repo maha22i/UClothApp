@@ -254,10 +254,34 @@ export default function OtpCode() {
                 </Text>
               </TouchableOpacity>
             </View>
-            <Button
+
+            <TouchableOpacity
+              style={{
+                width: 255,
+                height: 50,
+                borderRadius: 50,
+                justifyContent: "center",
+                alignItems: "center",
+                backgroundColor: COLORS.bleu,
+                alignSelf: "center",
+                marginBottom: 30,
+              }}
+              onPress={() => navigation.navigate("AccountCreated")}
+            >
+              <Text
+                style={{
+                  textTransform: "uppercase",
+                  fontSize: 14,
+                  color: COLORS.white,
+                }}
+              >
+                Vérifier
+              </Text>
+            </TouchableOpacity>
+            {/* <Button
               text="Vérifier"
               onPress={() => navigation.navigate("AccountCreated")}
-            />
+            /> */}
           </View>
         </ScrollView>
       </KeyboardAvoidingView>

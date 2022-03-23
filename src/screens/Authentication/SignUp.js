@@ -139,11 +139,36 @@ export default function SignIn({ navigation }) {
             }
             secureTextEntry={passVissibleTwo == true ? false : true}
           /> */}
-            <Button
+
+            <TouchableOpacity
+              style={{
+                width: 255,
+                height: 50,
+                borderRadius: 50,
+                justifyContent: "center",
+                alignItems: "center",
+                backgroundColor: COLORS.bleu,
+                alignSelf: "center",
+                marginBottom: 30,
+              }}
+              onPress={() => navigation.navigate("VerifyNumber")}
+            >
+              <Text
+                style={{
+                  textTransform: "uppercase",
+                  fontSize: 14,
+                  color: COLORS.white,
+                }}
+              >
+                Inscription
+              </Text>
+            </TouchableOpacity>
+
+            {/* <Button
               text="Inscription"
               containerStyle={{ marginBottom: 20 }}
               onPress={() => navigation.navigate("VerifyNumber")}
-            />
+            /> */}
           </View>
           {/* <View
             style={{
@@ -160,7 +185,7 @@ export default function SignIn({ navigation }) {
                 marginRight: 3,
               }}
             >
-              Already have an account?
+              J'ai déjà un compte?
             </Text>
             <TouchableOpacity onPress={() => navigation.navigate("SignIn")}>
               <Text

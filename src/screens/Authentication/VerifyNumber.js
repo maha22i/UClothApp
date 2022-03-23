@@ -4,6 +4,7 @@ import {
   SafeAreaView,
   ScrollView,
   KeyboardAvoidingView,
+  TouchableOpacity,
 } from "react-native";
 import React from "react";
 import PhoneInput from "react-native-phone-input";
@@ -73,10 +74,34 @@ export default function VerifyNumber() {
               placeholderTextColor={COLORS.black}
               initialCountry={"fr"}
             />
-            <Button
+
+            <TouchableOpacity
+              style={{
+                width: 255,
+                height: 50,
+                borderRadius: 50,
+                justifyContent: "center",
+                alignItems: "center",
+                backgroundColor: COLORS.bleu,
+                alignSelf: "center",
+                marginBottom: 30,
+              }}
+              onPress={() => navigation.navigate("OtpCode")}
+            >
+              <Text
+                style={{
+                  textTransform: "uppercase",
+                  fontSize: 14,
+                  color: COLORS.white,
+                }}
+              >
+                Continuer
+              </Text>
+            </TouchableOpacity>
+            {/* <Button
               text="Continuer"
               onPress={() => navigation.navigate("OtpCode")}
-            />
+            /> */}
           </View>
         </ScrollView>
       </KeyboardAvoidingView>
